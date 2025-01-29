@@ -4,10 +4,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700"
+            rel="stylesheet"
+        />
         <title>Portfolio</title>
         <style>
             body {
-                font-family: "Inter", sans-serif;
+                font-family: "Nanum Gothic Coding", monospace;
                 margin: 0;
                 padding: 0;
                 background-color: #f9f9f9;
@@ -89,6 +93,7 @@
                 font-weight: bold;
                 cursor: pointer;
                 transition: color 0.3s ease;
+                /*text-decoration-color: #333;*/
             }
             .portfolio-tab.active {
                 color: #007bff;
@@ -108,17 +113,20 @@
                 background-color: #1e1e1e;
             }
             aside {
+                position: sticky;
                 width: auto;
                 min-width: 200px;
                 max-width: fit-content;
                 padding: 20px;
+                margin-top: 20px;
                 background: #f5f5f5;
                 border-radius: 8px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 transition: background 0.3s ease;
                 white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                overflow-y: auto; /* 스크롤 활성화 */
+                max-height: 80vh; /* 최대 높이 제한 */
+                /*scroll-behavior: smooth;*/
             }
             aside.dark {
                 background: #2c2c2c;
@@ -202,6 +210,13 @@
                 color: #ccc;
                 border-color: #444;
             }
+            img {
+                width: 90%; /* 이미지 너비를 줄여서 여백을 확보 */
+                height: auto;
+                display: block;
+                margin: 0 auto; /* 이미지를 중앙에 배치 */
+                padding: 0 5%;
+            }
             @media (max-width: 768px) {
                 aside {
                     display: none;
@@ -213,84 +228,324 @@
         </style>
     </head>
     <body>
+        <!--------------------------------------------------------------------------------------------------------->
+        <!--------------------------------------------------------------------------------------------------------->
+        <!--탭 및 다크모드 버튼-->
+        <!--------------------------------------------------------------------------------------------------------->
+        <!--------------------------------------------------------------------------------------------------------->
         <header id="header">
             <div class="header-main">
-                <div class="portfolio-title" id="portfolioTitle">
-                    Portfolio 1
-                </div>
+                <div class="portfolio-title" id="portfolioTitle"></div>
                 <button id="darkModeToggle" onclick="toggleDarkMode()">
-                    🌞
+                    🌙
                 </button>
             </div>
             <div class="header-tabs">
                 <div
                     class="portfolio-tab active"
-                    onclick="switchPortfolio('portfolio1')"
-                    id="tab-portfolio1"
+                    onclick="switchPortfolio('에세이공유플랫폼')"
+                    id="tab-에세이공유플랫폼"
                 >
-                    Portfolio 1
+                    에세이공유플랫폼
                 </div>
                 <div
                     class="portfolio-tab"
-                    onclick="switchPortfolio('portfolio2')"
-                    id="tab-portfolio2"
+                    onclick="switchPortfolio('스마트스토어봇')"
+                    id="tab-스마트스토어봇"
                 >
-                    Portfolio 2
+                    스마트스토어봇
                 </div>
             </div>
         </header>
         <main id="main-content">
-            <aside id="sidebar">
-                <ul>
-                    <li>
-                        <a href="#section1" class="toc-main"
-                            >Section 1 with Long Name</a
-                        >
-                    </li>
-                    <ul>
-                        <li>
-                            <a href="#subsection1" class="toc-sub"
-                                >Subsection 1.1</a
-                            >
-                        </li>
-                        <li>
-                            <a href="#subsection2" class="toc-sub"
-                                >Subsection 1.2</a
-                            >
-                        </li>
-                    </ul>
-                    <li><a href="#section2" class="toc-main">Section 2</a></li>
-                    <ul>
-                        <li>
-                            <a href="#subsection3" class="toc-sub"
-                                >Subsection 2.1</a
-                            >
-                        </li>
-                    </ul>
-                </ul>
-            </aside>
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--목차(동적)-->
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <aside id="sidebar"></aside>
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--1번 탭 본문-->
+            <!--------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------->
             <section id="content">
-                <div id="portfolio1">
+                <div id="에세이공유플랫폼">
                     <div class="content-block">
-                        <h2 id="section1">Section 1</h2>
+                        <h2 id="개요">프로젝트 개요</h2>
                         <div class="sub-block">
-                            <h3 id="subsection1">Subsection 1.1</h3>
-                            <p>This is the content for Subsection 1.1.</p>
+                            <h3 id="링크">링크</h3>
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://github.com/team-echoist/server"
+                                        >GitHub</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedoutapp.com/"
+                                        >HomePage</a
+                                    >
+                                </li>
+                            </ul>
                         </div>
                         <div class="sub-block">
-                            <h3 id="subsection2">Subsection 1.2</h3>
-                            <p>This is the content for Subsection 1.2.</p>
+                            <h3 id="소개">소개</h3>
+                            <p>
+                                LinkedOut은 개인의 성장과 자기 이해를 돕는
+                                에세이 작성 플랫폼입니다. 이 플랫폼은 사용자가
+                                자신의 감정을 온전히 마주할 수 있도록 도와주는
+                                글쓰기 가이드라인과 환경을 제공하고 누구나
+                                자유롭고 쉽게 본인만의 에세이를 작성할 수
+                                있습니다. 글쓰기를 통해 감정을 해소하고자 하는
+                                사람들을 위해 설계된 이 서비스는, 단순히 글을
+                                쓰는 것만이 아니라 솔직하고 깊은 감정을 글로
+                                표현하는 것을 목표로 합니다.
+                            </p>
+                            <br />
+                            <p>
+                                현대인들은 살아가면서 수많은 감정을 느끼지만,
+                                타인의 시선 때문에 자신의 감정을 정확하게
+                                표현하는 데 어려움을 겪습니다. 현재 시중에 나와
+                                있는 많은 '글쓰기' 앱들은 SNS적인 요소가 강해,
+                                진솔한 글보다는 타인에게 잘 보이기 위한 꾸며낸
+                                글이 대부분입니다. LinkedOut은 이러한 문제를
+                                해결하기 위해 개인적인 감정과 감상을 솔직하게
+                                표현할 수 있도록 익명성을 보장하고 좋아요,
+                                조회수, 스크랩 수와 같은 상호작용을 제한함으로써
+                                내면의 이야기를 막힘없이 쓸 수 있도록 유도하고자
+                                했습니다.
+                            </p>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="목표">목표</h3>
+                            <p>
+                                <b><u>개인적인 목표</u></b>
+                            </p>
+                            <p>
+                                개발자로서의 성장을 멈추지 않고, 실제로 사람들이
+                                사용하는 가치 있는 서비스를 만들고 싶었습니다.
+                                이 프로젝트를 통해 팀을 구성하고 초기 기획을
+                                세우며, 실무 경험과 비슷한 환경에서 협업과 개발
+                                과정을 직접 경험하고자 했습니다. 궁극적으로는
+                                개발자로서의 성취감을 얻고 실사용자를 가진
+                                서비스를 만들어내는 것을 목표로 삼았습니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>기술적인 목표</u></b>
+                            </p>
+                            <p>
+                                대용량 트래픽을 효과적으로 처리할 수 있는 백엔드
+                                시스템을 설계하고, AWS 기반 오토스케일링 및
+                                무중단 배포로 안정성과 확장성을 확보하며
+                                리파지토리 패턴과 모듈화 설계 등을 통해
+                                유지보수성과 재사용성을 향상시키는 것을 목표로
+                                합니다.
+                            </p>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="기술스택">기술스택</h3>
+                            <p>
+                                <b><u>NestJS</u></b>
+                            </p>
+                            <p>
+                                라우트 중심의 자유로운 구조를 가진 Express와
+                                다르게 DI와 IoC를 기반의 명확한 레이어분리로
+                                안정적인 구조를 유지할 수 있습니다. 특히 내장된
+                                DI 컨테이너를 통해 객체의 생명주기를
+                                프레임워크가 관리하므로 리소스를 효율적으로
+                                관리하고 결합도를 낮추고 비즈니스 로직에 집숭할
+                                수 있습니다. 또한 데코레이터 기반 설계를
+                                제공하여 가독성이 뛰어납니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>PostgreSQL</u></b>
+                            </p>
+                            <p>
+                                모둔 구성에서 ACID 규정을 준수해 트랜잭션의
+                                원자성, 일관성, 고립성, 지속성을 보장해 데이터의
+                                무결성 유지에 유리합니다. 또한 동시성 제어를
+                                통해 여러 트랜잭션이 동시에 실행될 대도 데이터
+                                일관성을 유지하며 다양한 인덱스와 확장을
+                                지원합니다. 특히 이번 프로젝트에서 중요한
+                                검색기능과 위치기반 서비스 제공에 trgm 과 GIN
+                                인덱스, PostGIS 등이 사용되었습니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>TypeORM</u></b>
+                            </p>
+                            <p>
+                                TypeORM은 NestJS에서 공식적으로 지원하기 때문에
+                                의존성 주입 및 데코레이터 기반 설계와 자연스럽게
+                                결합되고 PostgreSQL과 원할한 연동이 가능하기
+                                때문에 선택했습니다. 특히 PosgreSQL의 PostGIS
+                                데이터 타입을 지원하기 때문에 활용면에서
+                                편리했습니다.
+                            </p>
+                            <br />
+
+                            <p>
+                                <b><u>AWS</u></b>
+                            </p>
+                            <p>
+                                타 클라우드 서비스에 비해 압도적으로 큰 생태계를
+                                가지고 있기 때문에 많은 정보와 해결책을 찾을 수
+                                있어 빠른 학습에 도움이된다 판단하여
+                                선택했습니다. 이번 프로젝트에서는 ECS, ECR, RDS,
+                                ElastiCache, S3, CodePipeline, CloudFront,
+                                CloudWatch, Route 53 등의 서비스를 사용했습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2 id="아키텍처">아키텍처 및 설계</h2>
+                        <div class="sub-block">
+                            <h3 id="인프라아키텍쳐">인프라 아키텍처</h3>
+                            <img
+                                src="./image/aws_architecture.png"
+                                alt=""
+                                onclick="window.open(this.src)"
+                            />
+                            <br />
+                            <br />
+                            <p>
+                                <b><u>고가용성과 수평 확장성</u></b>
+                            </p>
+                            <p>
+                                ECS를 사용해 AutoScaling 그룹으로 구성하여
+                                트래픽 변화에 유동적으로 EC2인스턴스를 인/아웃
+                                스케일링으로 대응하여 서비스의 가용성과 확장성을
+                                확보합니다.
+                            </p>
+                            <p>
+                                또한 Multi-AZ 배포를 통해 두 개의 가용 영역을
+                                사용하므로 장애 발생 시에도 서비스가 중다되지
+                                않도록 고가용성을 보장했습니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>네트워크 설계</u></b>
+                            </p>
+                            <p>
+                                기본적으로 중요한 리소스들(서버, 데이터베이스
+                                등)은 프라이빗 서브넷에 배치하여 외부에서 접근할
+                                수 없지만 VPC 내에서 분리되어 있는
+                                퍼블릭/프라이빗 서브넷을 NAT 게이트웨이로
+                                연결하여 퍼블릭 서브넷의 로드 밸런서를 통해
+                                트래픽을 전달/분산 하고 통신할 수 있도록
+                                하였습니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>인프라 관리 및 모니터링</u></b>
+                            </p>
+                            <p>
+                                애플리케이션을 컨테이너화하여 ECS로 관리하고
+                                CI/CD 파이프라인을 구축해 완전자동 배포와
+                                안정성을 높였습니다.
+                            </p>
+                            <p>
+                                모니터링에는 AWS의 관리형 서비스를 적극
+                                활용했습니다. RDS와 ElastiCache에서 제공하는
+                                로그와 CloudWatch를 활용한 모니터링과 알림
+                                설정으로 시스템의 상태를 실시간으로 파악하고
+                                대응할 수 있도록 했습니다.
+                            </p>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="설계패턴">주요 설계 패턴</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="ERD">ERD</h3>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2 id="주요기능">주요 기능</h2>
+                        <div class="sub-block">
+                            <h3 id="추천에세이">추천 에세이</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="평판및트렌드">평판 및 트렌드</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="에세이검색">에세이 검색</h3>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2 id="성능최적화및확장성">성능 최적화 및 확장성</h2>
+                        <div class="sub-block">
+                            <h3 id="동시성제어">동시성 제어</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="캐싱전략">캐싱 전략</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="작업분산">작업 분산</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="부하테스트">부하 테스트</h3>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2 id="운영시스템">운영 시스템</h2>
+                        <div class="sub-block">
+                            <h3 id="역할기반접근제어">역할기반 접근제어</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="서버상태관리">서버 상태 관리</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="신고및제재관리">신고 및 제재 관리</h3>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2 id="보안">보안</h2>
+                        <div class="sub-block">
+                            <h3 id="데이터보호">데이터보호</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="입력검증">입력검증</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="인증및토큰관리">인증 및 토큰 관리</h3>
                         </div>
                     </div>
                     <div class="content-block">
-                        <h2 id="section2">Section 2</h2>
+                        <h2 id="devops및배포">DevOps 및 배포</h2>
                         <div class="sub-block">
-                            <h3 id="subsection3">Subsection 2.1</h3>
-                            <p>This is the content for Subsection 2.1.</p>
+                            <h3 id="CI/CD">CI/CD</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="컨테이너오케스트레이션">
+                                컨테이너 오케스트레이션
+                            </h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="모니터링및로깅">모니터링 및 로깅</h3>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2 id="API문서화">API 문서화</h2>
+                        <div class="sub-block">
+                            <h3 id="스웨거">스웨거</h3>
                         </div>
                     </div>
                 </div>
-                <div id="portfolio2" style="display: none">
+                <!--------------------------------------------------------------------------------------------------------->
+                <!--------------------------------------------------------------------------------------------------------->
+                <!--2번 탭 본문-->
+                <!--------------------------------------------------------------------------------------------------------->
+                <!--------------------------------------------------------------------------------------------------------->
+                <div id="스마트스토어봇" style="display: none">
                     <div class="content-block">
                         <h2>Portfolio 2</h2>
                         <p>This is Portfolio 2 content.</p>
@@ -298,7 +553,14 @@
                 </div>
             </section>
         </main>
-        <footer id="footer">&copy; 2025 Your Name. All rights reserved.</footer>
+        <footer id="footer">
+            &copy; 2025 Daechan Jo. All rights reserved.
+        </footer>
+        <!--------------------------------------------------------------------------------------------------------->
+        <!--------------------------------------------------------------------------------------------------------->
+        <!--자바스크립트-->
+        <!--------------------------------------------------------------------------------------------------------->
+        <!--------------------------------------------------------------------------------------------------------->
         <script>
             let darkMode = false;
 
@@ -332,26 +594,116 @@
                     : "🌙";
             }
 
+            const portfolioToc = {
+                에세이공유플랫폼: `
+        <ul>
+            <li><a href="#개요" class="toc-main">프로젝트 개요</a></li>
+            <ul>
+                <li><a href="#링크" class="toc-sub">링크</a></li>
+                <li><a href="#소개" class="toc-sub">소개</a></li>
+                <li><a href="#목표" class="toc-sub">목표</a></li>
+                <li><a href="#기술스택" class="toc-sub">기술스택</a></li>
+            </ul>
+            <br>
+            <li><a href="#아키텍처" class="toc-main">아키텍처 및 설계</a></li>
+            <ul>
+                <li><a href="#인프라아키텍처" class="toc-sub">인프라 아키텍처</a></li>
+                <li><a href="#설계패턴" class="toc-sub">주요 설계 패턴</a></li>
+                <li><a href="#ERD" class="toc-sub">ERD</a></li>
+            </ul>
+            <br>
+             <li><a href="#주요기능" class="toc-main"></a>주요 기능</li>
+            <ul>
+                <li><a href="#추천에세이" class="toc-sub">추천 에세이</a></li>
+                <li><a href="#평판및트렌드" class="toc-sub">평판 및 트렌드</a></li>
+                <li><a href="#에세이검색" class="toc-sub">에세이 검색</a></li>
+            </ul>
+              <br>
+             <li><a href="#성능최적화및확장성" class="toc-main">최적화 및 확장성</a></li>
+            <ul>
+                <li><a href="#동시성제어" class="toc-sub">동시성 제어</a></li>
+                <li><a href="#캐싱전략" class="toc-sub">캐싱 전략</a></li>
+                <li><a href="#작업분산" class="toc-sub">작업 분산</a></li>
+                <li><a href="#부하테스트" class="toc-sub">부하 테스트</a></li>
+            </ul>
+              <br>
+             <li><a href="#운영시스템" class="toc-main">운영 시스템</a></li>
+            <ul>
+                <li><a href="#역할기반접근제어" class="toc-sub">역할기반 접근제어</a></li>
+                <li><a href="#서버상태관리" class="toc-sub">서버상태 관리</a></li>
+                <li><a href="#신고및제재관리" class="toc-sub">신고 및 제재 관리</a></li>
+            </ul>
+              <br>
+             <li><a href="#보안" class="toc-main">보안</a></li>
+            <ul>
+                <li><a href="#데이터보호" class="toc-sub">데이터 보호</a></li>
+                <li><a href="#입력검증" class="toc-sub">입력 검증</a></li>
+                <li><a href="#인증및토큰관리" class="toc-sub">인증 및 토큰 관리</a></li>
+            </ul>
+              <br>
+             <li><a href="#devops및배포" class="toc-main">DevOps 및 배포</a></li>
+            <ul>
+                <li><a href="#CI/CD" class="toc-sub">CI/CD</a></li>
+                <li><a href="#컨테이너오케스트레이션" class="toc-sub">컨테이너오케스트레이션</a></li>
+                <li><a href="#모니터링및로깅" class="toc-sub">모니터링 및 로깅</a></li>
+            </ul>
+              <br>
+             <li><a href="#API문서화" class="toc-main">API문서화</a></li>
+            <ul>
+                <li><a href="#스웨거" class="toc-sub">스웨거</a></li>
+            </ul>
+        </ul>
+    `,
+                스마트스토어봇: `
+        <ul>
+            <li><a href="#overview" class="toc-main">Overview</a></li>
+            <ul>
+                <li><a href="#features" class="toc-sub">Features</a></li>
+                <li><a href="#tech-stack" class="toc-sub">Tech Stack</a></li>
+                <li><a href="#challenges" class="toc-sub">Challenges</a></li>
+            </ul>
+            <li><a href="#use-cases" class="toc-main">Use Cases</a></li>
+            <ul>
+                <li><a href="#case1" class="toc-sub">Case 1</a></li>
+                <li><a href="#case2" class="toc-sub">Case 2</a></li>
+            </ul>
+        </ul>
+    `,
+            };
+
+            function updateToc(portfolioId) {
+                sidebar.innerHTML = portfolioToc[portfolioId] || "";
+            }
+
             function switchPortfolio(portfolioId) {
-                document.getElementById("portfolio1").style.display =
-                    portfolioId === "portfolio1" ? "block" : "none";
-                document.getElementById("portfolio2").style.display =
-                    portfolioId === "portfolio2" ? "block" : "none";
+                document.getElementById("에세이공유플랫폼").style.display =
+                    portfolioId === "에세이공유플랫폼" ? "block" : "none";
+                document.getElementById("스마트스토어봇").style.display =
+                    portfolioId === "스마트스토어봇" ? "block" : "none";
                 document
-                    .getElementById("tab-portfolio1")
-                    .classList.toggle("active", portfolioId === "portfolio1");
+                    .getElementById("tab-에세이공유플랫폼")
+                    .classList.toggle(
+                        "active",
+                        portfolioId === "에세이공유플랫폼",
+                    );
                 document
-                    .getElementById("tab-portfolio2")
-                    .classList.toggle("active", portfolioId === "portfolio2");
+                    .getElementById("tab-스마트스토어봇")
+                    .classList.toggle(
+                        "active",
+                        portfolioId === "스마트스토어봇",
+                    );
                 document.getElementById("portfolioTitle").textContent =
-                    portfolioId === "portfolio1"
-                        ? "Portfolio 1"
-                        : "Portfolio 2";
+                    portfolioId === "에세이공유플랫폼"
+                        ? "에세이공유플랫폼"
+                        : "스마트스토어봇";
+
+                // 목차 업데이트
+                updateToc(portfolioId);
             }
 
             // Initialize first portfolio as active
             document.addEventListener("DOMContentLoaded", () => {
-                switchPortfolio("portfolio1");
+                switchPortfolio("에세이공유플랫폼");
             });
 
             let lastScrollTop = 0;
@@ -365,6 +717,26 @@
                     header.classList.remove("hidden");
                 }
                 lastScrollTop = currentScroll;
+            });
+
+            // 목차
+            const sidebar = document.getElementById("sidebar");
+
+            // sidebar.addEventListener("wheel", (e) => {
+            //     e.preventDefault(); // 기본 휠 스크롤 동작 방지
+            //     // sidebar.scrollTop += e.deltaY * 0.5; // 스크롤 속도 조정 (0.5배 느리게)
+            // });
+            sidebar.addEventListener("wheel", (e) => {
+                if (sidebar.scrollHeight > sidebar.clientHeight) {
+                    e.stopPropagation(); // 본문 스크롤과 충돌 방지
+                }
+            });
+
+            window.addEventListener("scroll", () => {
+                const sidebar = document.getElementById("sidebar");
+                const headerHeight =
+                    document.getElementById("header").offsetHeight;
+                sidebar.style.top = `${headerHeight + 10}px`;
             });
         </script>
     </body>
