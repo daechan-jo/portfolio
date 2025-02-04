@@ -272,10 +272,10 @@
                 </div>
                 <div
                     class="portfolio-tab"
-                    onclick="switchPortfolio('스마트스토어자동화')"
-                    id="tab-스마트스토어자동화"
+                    onclick="switchPortfolio('스토어자동화솔루션')"
+                    id="tab-스토어자동화솔루션"
                 >
-                    스마트스토어자동화
+                    스토어자동화솔루션
                 </div>
             </div>
         </header>
@@ -2047,10 +2047,58 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
                 <!--2번 탭 본문-->
                 <!--------------------------------------------------------------------------------------------------------->
                 <!--------------------------------------------------------------------------------------------------------->
-                <div id="스마트스토어자동화" style="display: none">
+                <div id="스토어자동화솔루션" style="display: none">
                     <div class="content-block">
-                        <h2>Portfolio 2</h2>
-                        <p>This is Portfolio 2 content.</p>
+                        <h2 id="개요2">프로젝트 개요</h2>
+                        <div class="sub-block">
+                            <h3 id="소개2">소개</h3>
+                            <p>
+                                이 프로젝트는 도매사이트와 온라인 스토어
+                                사이에서 발생하는 반복적인 업무를 완전
+                                자동화하는 것을 목표로 시작되었습니다. 온라인
+                                스토어 운영은 주문 처리, 품절상품 관리, 운송장
+                                등록, 가격 경쟁 등 다양한 업무를 처리해야하는데
+                                이는 시간과 노력을 많이 소모하는 과정입니다.
+                            </p>
+                            <p>
+                                본 시스템은 관리의 자동화뿐만 아니라 운영
+                                효율성과 시간 절약을 실현할 수 있는 강력한
+                                도구로서 수동 관리의 번거로움과 오류를
+                                최소화하여 지속 가능한 운영이 가능하도록
+                                돕습니다.
+                            </p>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="목표2">목표</h3>
+                            <p>
+                                <b><u>스토어 규칙 준수</u></b>
+                            </p>
+                            <p>
+                                온라인스토어를 제공하는 플랫폼의 경우 보편적으로
+                                주문이 발생하면 판매자는 기간 내에 주문을
+                                확인하고 정시출고가 되도록 발주처리를
+                                해야합니다. 또한 발생한 주문은 어떠한
+                                이유든(품절 등..) 판매자 귀책사유로 취소될 시
+                                패널티가 부여됩니다.
+                            </p>
+                            <p>
+                                이를 지키기 위해 품절 상품에 대한 빠른 조치와
+                                운송 상태 실시간 갱신을 자동화 처리 합니다.
+                            </p>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="기술스택2">기술스택</h3>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <h2 id="아키텍처2">아키텍처 및 설계</h2>
+                        <div class="sub-block">
+                            <h3 id="msa">MSA</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="메시지처리">메시지 처리 아키텍처</h3>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -2114,7 +2162,7 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
                 <li><a href="#ERD" class="toc-sub">ERD</a></li>
             </ul>
             <br>
-             <li><a href="#주요기능" class="toc-main"></a>주요 기능</li>
+             <li><a href="#주요기능" class="toc-main">주요 기능</a></li>
             <ul>
                 <li><a href="#추천에세이" class="toc-sub">추천 에세이</a></li>
                 <li><a href="#평판및트렌드" class="toc-sub">평판 및 트렌드</a></li>
@@ -2160,18 +2208,18 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
             </ul>
         </ul>
     `,
-                스마트스토어자동화: `
+                스토어자동화솔루션: `
         <ul>
-            <li><a href="#overview" class="toc-main">Overview</a></li>
+            <li><a href="#개요2" class="toc-main">프로젝트 개요</a></li>
             <ul>
-                <li><a href="#features" class="toc-sub">Features</a></li>
-                <li><a href="#tech-stack" class="toc-sub">Tech Stack</a></li>
-                <li><a href="#challenges" class="toc-sub">Challenges</a></li>
+                <li><a href="#소개2" class="toc-sub">소개</a></li>
+                <li><a href="#목표2" class="toc-sub">목표</a></li>
+                <li><a href="#기술스택2" class="toc-sub">기술스택</a></li>
             </ul>
-            <li><a href="#use-cases" class="toc-main">Use Cases</a></li>
+            <li><a href="아키텍처2" class="toc-main">아키텍처 및 설계</a></li>
             <ul>
-                <li><a href="#case1" class="toc-sub">Case 1</a></li>
-                <li><a href="#case2" class="toc-sub">Case 2</a></li>
+                <li><a href="#msa" class="toc-sub">MSA</a></li>
+                <li><a href="#메시지처리" class="toc-sub">메시지 처리 아키텍처</a></li>
             </ul>
         </ul>
     `,
@@ -2184,8 +2232,8 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
             function switchPortfolio(portfolioId) {
                 document.getElementById("에세이공유플랫폼").style.display =
                     portfolioId === "에세이공유플랫폼" ? "block" : "none";
-                document.getElementById("스마트스토어자동화").style.display =
-                    portfolioId === "스마트스토어자동화" ? "block" : "none";
+                document.getElementById("스토어자동화솔루션").style.display =
+                    portfolioId === "스토어자동화솔루션" ? "block" : "none";
                 document
                     .getElementById("tab-에세이공유플랫폼")
                     .classList.toggle(
@@ -2193,10 +2241,10 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
                         portfolioId === "에세이공유플랫폼",
                     );
                 document
-                    .getElementById("tab-스마트스토어자동화")
+                    .getElementById("tab-스토어자동화솔루션")
                     .classList.toggle(
                         "active",
-                        portfolioId === "스마트스토어자동화",
+                        portfolioId === "스토어자동화솔루션",
                     );
                 document.getElementById("portfolioTitle").textContent =
                     portfolioId === "에세이공유플랫폼"
