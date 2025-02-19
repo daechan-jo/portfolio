@@ -2847,6 +2847,68 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
                             </ul>
                         </div>
                     </div>
+
+                    <div class="content-block">
+                        <h2 id="이슈">이슈 및 해결</h2>
+                        <div class="sub-block">
+                            <h3 id="OOM">OOM</h3>
+                        </div>
+                        <div class="sub-block">
+                            <h3 id="elk">로깅</h3>
+                            <img
+                                src="./image/elk.png"
+                                alt=""
+                                onclick="window.open(this.src)"
+                            />
+                            <br />
+                            <p>
+                                기존에는 PM2로 여러 마이크로서비스를 실행하면서
+                                각 서비스별로 생성되는 로그파일을 직접 확인해야
+                                했습니다. 하지만 이러한 방식은 이슈가 발생했을
+                                때 해당 시간을 기준으로 각 서비스에서 발생한
+                                로그를 일일이 찾아야 했고, 서비스 간 메시지를
+                                주고받으며 동작하는 구조상 하나의 작업이 여러
+                                서비스로 전파되기 대문에 전체 흐름을 파악하기가
+                                까다로웠습니다.
+                            </p>
+                            <br />
+                            <img
+                                src="./image/elk2.png"
+                                alt=""
+                                onclick="window.open(this.src)"
+                            />
+                            <br />
+                            <ul>
+                                <li>
+                                    <p><b>작업에 고유 아이디 부여</b></p>
+                                    <p>
+                                        각 서비스에서 특정 작업을 실행할 때
+                                        고유한 작업 아이디를 생성하도록
+                                        했습니다. 이 아이디는 서비스 간 메시지를
+                                        전달할 때 동일하게 포함하여 전송되므로,
+                                        하나의 작업 흐름이 여러 서비스로
+                                        확산되더라도 Kibana 상에서 아이디를
+                                        기준으로 전체 로그를 손쉽게 추적할 수
+                                        있습니다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><b>ELK Stack</b></p>
+                                    <p>
+                                        PM2가 수집한 로그 데이터를 Logstash를
+                                        통해 Elasticasearch에 저장하고, Kibana를
+                                        통해 시각화하도록 구성했습니다. 이를
+                                        통해 MSA환경에서 발생하는 로그를
+                                        중앙집중식으로 관리하며 서비스 간 메시지
+                                        전달 과정에서 발생하는 이슈를 실시간으로
+                                        모니터링하고 이슈 발생 시 해당 시점의
+                                        로그를 즉시 확인할 수 있습니다.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="content-block">
                         <h2 id="성과2">성과 및 개선점</h2>
                         <div class="sub-block">
@@ -2891,8 +2953,9 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
                                         이를 통해 단순히 개념적으로 이해하는
                                         것을 넘어 실제 운영 환경에서 MSA를
                                         적용하면서 겪은 시행착오와 개선 경험을
-                                        얻을 수 있었습니다.
+                                        얻을 수 있었습니다.성
                                     </p>
+
                                     <p>
                                         모놀리식 구조에서 유지보수와 확장성에
                                         한계를 직접 느끼고 이를 해결하기위해
@@ -3111,7 +3174,13 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
             		<li><a href="#주문" class="toc-sub">주문 처리</a></li>
             		<li><a href="#배송" class="toc-sub">배송 처리</a></li>
             		<li><a href="#가격" class="toc-sub">자동 가격 조정</a></li>
-            </ul>
+           </ul>
+           <br>
+        <li><a href="#이슈" class="toc-main">이슈 및 해결</a></li>
+        <ul>
+        <li><a href="#OOM" class="toc-sub">OOM</a></li>
+        <li><a href="#로깅" class="toc-sub">elk</a></li>
+        </ul>
 <br>
             <li><a href="#성과2" class="toc-main">성과 및 개선점</a></li>
             <ul>
