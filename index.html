@@ -2115,7 +2115,7 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
                             <ul>
                                 <li>
                                     <a
-                                        href="https://github.com/daechan-jo/auto-store"
+                                        href="https://github.com/orgs/hush-mart/repositories"
                                         >GitHub</a
                                     >
                                 </li>
@@ -2204,6 +2204,89 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
                     <div class="content-block">
                         <h2 id="아키텍처2">아키텍처 및 설계</h2>
                         <div class="sub-block">
+                            <h3 id="kub">Kubernetes</h3>
+                            <img
+                                src="./image/kube.png"
+                                alt=""
+                                onclick="window.open(this.src)"
+                            />
+                            <br />
+                            <p>
+                                <b><u>CI/CD</u></b>
+                            </p>
+                            <p>
+                                GitHub Actions과 kubernetes만을 활용하여 코드
+                                변경부터 배포까지 전 과정을 자동화했습니다.
+                                코드를 main 브랜치에 병합하면 자동으로 테스트,
+                                빌드, 이미지 생성 및 배포 단계가 실행됩니다.
+                                TypeScript 코드의 정적 분석을 통과한 후에만
+                                Docker 이미지를 빌드하고 레지스트리에 푸시하도록
+                                설계했습니다. 이를 통해 개발 생산성을 크게
+                                향상시키고 인적 오류 가능성을 최소화 합니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>선언적 인프라 관리</u></b>
+                            </p>
+                            <p>
+                                쿠버네티스 매니페스트를 통해 인프라를 코드로
+                                관리하여 버전 관리 및 변경 추적이 가능하도록
+                                구현했습니다. Deployment, Service, ConfigMap,
+                                Secret 등의 리소스를 YAML 파일로 정의하고 GitOps
+                                방식으로 관리함으로써 인프라 변경사항을 코드
+                                리뷰 프로세스와 동일하게 검토할 수 있게
+                                되었습니다. NestJS 애플리케이션의 각
+                                마이크로서비스별로 분리된 매니페스트를 관리하여
+                                서비스 간 의존성을 명확히 하고, 환경 변수와
+                                시크릿을 효율적으로 주입하는 패턴을
+                                적용했습니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>롤링 업데이트 전략</u></b>
+                            </p>
+                            <p>
+                                서비스 중단 없이 새 버전을 배포할 수 있는 롤링
+                                업데이트 전략을 구현했습니다. 쿠버네티스
+                                Deployment에 maxSurge와 maxUnavailable
+                                파라미터를 최적화하여 배포 중에도 서비스
+                                가용성을 유지하도록 설정했습니다. 또한 Readiness
+                                Probe와 Liveness Probe를 세심하게 구성하여
+                                트래픽이 정상 작동 중인 컨테이너로만
+                                라우팅되도록 보장했습니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>자동 스케일링</u></b>
+                            </p>
+                            <p>
+                                HPA(Horizontal Pod Autoscaler)를 구성하여
+                                트래픽과 리소스 사용량에 따라 컨테이너 수를
+                                동적으로 조절하도록 설계했습니다. CPU 사용률,
+                                메모리 사용량, 초당 요청 수 등 다양한 메트릭을
+                                기반으로 스케일링 임계값을 설정하여 리소스
+                                사용량이 급증하는 작업에 동적으로 컨테이너 수를
+                                조절할 수 있도록 구성했습니다.
+                            </p>
+                            <br />
+                            <p>
+                                <b><u>트래픽 관리</u></b>
+                            </p>
+                            <p>
+                                NGINX Ingress Controller를 도입하여 외부
+                                트래픽을 마이크로서비스로 라우팅하는 기본적인
+                                시스템을 구축했습니다. 클러스터 외부에서
+                                들어오는 HTTP/HTTPS 요청을 적절한 내부 서비스와
+                                파드로 연결해주는 진입점 역할을 담당합니다.
+                                간단한 경로 기반 라우팅 규칙을 설정하여 마이크로
+                                서비스 중 API-gateway 역할 파드로 라우팅합니다.
+                                이를 통해 클라이언트가 단일 진입점으로
+                                접근하면서도 내부적으로는 분산된 마이크로서비스
+                                아키텍처의 이점을 활용합니다.
+                            </p>
+                        </div>
+                        <br />
+                        <div class="sub-block">
                             <h3 id="msa">MSA</h3>
                             <img
                                 src="./image/msa.png"
@@ -2216,7 +2299,7 @@ default ✓ [======================================] 000/800 VUs  29m0s</code></
                                 설계되었습니다. 기능별로 분리된 여러 개의
                                 독립적인 서비스들이 상호작용하여 운영됩니다. 각
                                 서비스는 RabbitMQ 기반의 비동기 메시지 큐를
-                                활용하여 통신하며 스크래핑 및 API 요청 처리
+                                활용하여 통신하며 크롤링 및 API 요청 처리
                                 서비스와 연동됩니다.
                             </p>
                             <br />
@@ -2868,7 +2951,7 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
                                 대량의 데이터를 한 번에 조회 및 가공하는
                                 과정에서 Node.js 프로세스가 허용하는 힙 메모리
                                 한도를 초과하는 경우가 종종 발생했습니다. 리소스
-                                누수를 방지하기 위해 웹 스크래핑 데이터를
+                                누수를 방지하기 위해 크롤링 데이터를
                                 데이터베이스에 임시로 저장하고 있었지만, 특정
                                 시점에 대량의 레코드를 한꺼번에 조회해서 처리를
                                 시도하는 과정에 메모리가 급격히 상승한 것이
@@ -2881,9 +2964,9 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
                                     할당 및 가공
                                 </li>
                                 <li>
-                                    NodeJS는 기본적으로 1~2GB 가량의고 힙
-                                    메모리를 사용하도록 제한되어 있어 대규모
-                                    데이터를 한꺼번에 처리할경우 가바지 콜렉션이
+                                    NodeJS는 기본적으로 1~2GB 가량의 힙 메모리를
+                                    사용하도록 제한되어 있어 대규모 데이터를
+                                    한꺼번에 처리할경우 가비지 콜렉션이
                                     잦아지면서 힙 한도를 초과하게됩니다.
                                 </li>
                                 <li>
@@ -2896,6 +2979,7 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
                             <br />
                             <p>
                                 이를 해결하기 위해, 기존에 적용했던 분산처리에
+                                todo..
                             </p>
                         </div>
                         <div class="sub-block">
@@ -2907,14 +2991,13 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
                             />
                             <br />
                             <p>
-                                기존에는 PM2로 여러 마이크로서비스를 실행하면서
-                                각 서비스별로 생성되는 로그파일을 직접 확인해야
-                                했습니다. 하지만 이러한 방식은 이슈가 발생했을
-                                때 해당 시간을 기준으로 각 서비스에서 발생한
-                                로그를 일일이 찾아야 했고, 서비스 간 메시지를
-                                주고받으며 동작하는 구조상 하나의 작업이 여러
-                                서비스로 전파되기 대문에 전체 흐름을 파악하기가
-                                까다로웠습니다.
+                                기존에는 각 서비스별로 생성되는 로그파일을 직접
+                                확인해야 했습니다. 하지만 이러한 방식은 이슈가
+                                발생했을 때 해당 시간을 기준으로 각 서비스에서
+                                발생한 로그를 일일이 찾아야 했고, 서비스 간
+                                메시지를 주고받으며 동작하는 구조상 하나의
+                                작업이 여러 서비스로 전파되기 대문에 전체 흐름을
+                                파악하기가 까다로웠습니다.
                             </p>
                             <br />
                             <img
@@ -2940,10 +3023,10 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
                                 <li>
                                     <p><b>ELK Stack</b></p>
                                     <p>
-                                        PM2가 수집한 로그 데이터를 Logstash를
-                                        통해 Elasticasearch에 저장하고, Kibana를
-                                        통해 시각화하도록 구성했습니다. 이를
-                                        통해 MSA환경에서 발생하는 로그를
+                                        수집한 로그 데이터를 Fluent Bit를 통해
+                                        Elasticasearch에 저장하고, Kibana를 통해
+                                        시각화하도록 구성했습니다. 이를 통해
+                                        MSA환경에서 발생하는 로그를
                                         중앙집중식으로 관리하며 서비스 간 메시지
                                         전달 과정에서 발생하는 이슈를 실시간으로
                                         모니터링하고 이슈 발생 시 해당 시점의
@@ -3210,6 +3293,7 @@ if (newBasePrice < minAllowedPrice || newBasePrice < 7000 || newBasePrice > 1000
             <br>
             <li><a href="아키텍처2" class="toc-main">아키텍처 및 설계</a></li>
             <ul>
+            		<li><a href="#kube" class="toc-sub">Kubernetes</a></li>
                 <li><a href="#msa" class="toc-sub">MSA</a></li>
                 <li><a href="#메시지처리" class="toc-sub">메시지 처리 아키텍처</a></li>
             </ul>
